@@ -12,22 +12,32 @@ public class PriemOntbinding {
 
 	public String po(int n) {
 		
+		// using String list here since that is the only valid List type which can be used using String.join(...);
 		List<String> factorList = po(2, n, new ArrayList<String>());
 		
-		return String.join(", ", factorList);
+		return String.join(",", factorList);
 	}
 
 	private List<String> po(int lastFactor, int n, List<String> factors) {
 		
-		if (n % lastFactor == 0) {
-			factors.add(Integer.valueOf(lastFactor).toString());
-			po(lastFactor, n / lastFactor, factors);
+		//simples case
+		if(isPrime(n)) {
+			factors.add(Integer.valueOf(n).toString());
+			return factors;
 		}
 		else {
-			if (lastFactor < n) {
-				po(++lastFactor, n, factors);
+			if (n % lastFactor == 0) {
+				factors.add(Integer.valueOf(lastFactor).toString());
+				po(lastFactor, n / lastFactor, factors);
+			}
+			else {
+				if (lastFactor < n) {
+					po(++lastFactor, n, factors);
+				}
 			}
 		}
+		
+		
 		
 		return factors;
 	}
