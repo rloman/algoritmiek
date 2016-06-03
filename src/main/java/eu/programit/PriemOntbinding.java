@@ -7,12 +7,18 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
+import org.apache.log4j.Logger;
+
 public class PriemOntbinding {
 
 	private static final int PRETTYSURE = 10000;
 
+	private static final Logger LOGGER = Logger.getLogger(PriemOntbinding.class);
+
 	public String po(int n) {
-		
+
+		LOGGER.debug(String.format("Entering PriemOntbinding::po with [%d]", n));
+
 		String result = "";
 
 		Map<Integer, Integer> counterMap = new TreeMap<>();
@@ -41,6 +47,9 @@ public class PriemOntbinding {
 
 			tail = true;
 		}
+
+		LOGGER.info(String.format("The result of the po of [%d] is [%s]", n, result));
+		LOGGER.debug(String.format("Leaving PriemOntbinding::po with [%d]", n));
 
 		return result;
 	}
