@@ -1,22 +1,26 @@
 package eu.programit;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PriemOntbinding {
+	
+	private List<Integer> result = new ArrayList<>();
 
 	public static void main(String[] args) {
-		new PriemOntbinding().po(8);
+		System.out.println(new PriemOntbinding().po(144));
 	}
 
-	public void po(int n) {
+	public String po(int n) {
 
-		po(2, n);
+		return po(2, n);
 	}
 
-	private void po(int lastFactor, int n) {
+	private String po(int lastFactor, int n) {
 
 		if (n % lastFactor == 0) {
-			System.out.println(lastFactor);
+			this.result.add(lastFactor);
 			po(lastFactor, n / lastFactor);
 		}
 		else {
@@ -24,6 +28,8 @@ public class PriemOntbinding {
 				po(++lastFactor, n);
 			}
 		}
+		
+		return this.result.toString();
 	}
 
 	private boolean isPrime(int factor) {
