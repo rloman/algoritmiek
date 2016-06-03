@@ -16,6 +16,7 @@ public class GaussTest {
 	
 	@Test
 	public void testGauss() {
+		
 		Assert.assertEquals(21, gauss.gauss(6));
 	}
 	
