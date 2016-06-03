@@ -3,6 +3,9 @@ package eu.programit;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 
 public class PriemOntbinding {
 
@@ -14,9 +17,36 @@ public class PriemOntbinding {
 
 		// using String list here since that is the only valid List type which
 		// can be used using String.join(...);
+		
+		Map <String, Integer> counterMap = new TreeMap<>();
 		List<String> factorList = po(2, n, new ArrayList<String>());
+		
+		String result = "";
+		
+		for(String element : factorList) {
+			
+			if(counterMap.get(element) == null ) {
+				counterMap.put(element, 0);
+			}
+			counterMap.put(element, counterMap.get(element)+1);
+		}
+		
+		boolean tail = false;
+		for(Entry<String, Integer> element : counterMap.entrySet()) {
+			if(tail) {
+				result += "*";
+			}
+			if(element.getValue() == 1) {
+				result += element.getKey();
+			}
+			else {
+				result += element.getKey()+"^"+element.getValue();
+			}
+			
+			tail = true;
+		}
 
-		return String.join(",", factorList);
+		return result;
 	}
 
 	private List<String> po(int lastFactor, int n, List<String> factors) {
@@ -47,5 +77,11 @@ public class PriemOntbinding {
 		boolean result = bi.isProbablePrime(100);
 
 		return result;
+	}
+}
+
+class CounterMap {
+	void add(String factor) {
+		
 	}
 }

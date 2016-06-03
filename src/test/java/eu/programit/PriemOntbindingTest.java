@@ -16,12 +16,12 @@ public class PriemOntbindingTest {
 	
 	@Test
 	public void testSix() {
-		Assert.assertEquals("2,3", this.po.po(6));
+		Assert.assertEquals("2*3", this.po.po(6));
 	}
 	
 	@Test
 	public void testNine() {
-		Assert.assertEquals("3,3", this.po.po(9));
+		Assert.assertEquals("3^2", this.po.po(9));
 	}
 	
 	@Test
@@ -31,17 +31,17 @@ public class PriemOntbindingTest {
 	
 	@Test
 	public void test21() {
-		Assert.assertEquals("3,7", this.po.po(21));
+		Assert.assertEquals("3*7", this.po.po(21));
 	}
 	
 	@Test
 	public void test4(){
-		Assert.assertEquals("2,2", this.po.po(4));
+		Assert.assertEquals("2^2", this.po.po(4));
 	}
 	
 	@Test
 	public void test1024() {
-		Assert.assertEquals("2,2,2,2,2,2,2,2,2,2", this.po.po(1024));
+		Assert.assertEquals("2^10", this.po.po(1024));
 	}
 
 }
