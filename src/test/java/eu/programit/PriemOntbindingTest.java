@@ -43,5 +43,10 @@ public class PriemOntbindingTest {
 	public void test1024() {
 		Assert.assertEquals("2^10", this.po.po(1024));
 	}
+	
+	@Test
+	public void test44() {
+		Assert.assertEquals("2^2*11", this.po.po(44));
+	}
 
 }
