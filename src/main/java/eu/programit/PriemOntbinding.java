@@ -6,30 +6,30 @@ import java.util.List;
 
 public class PriemOntbinding {
 	
-	private List<Integer> result = new ArrayList<>();
-
 	public static void main(String[] args) {
-		System.out.println(new PriemOntbinding().po(144));
+		System.out.println(new PriemOntbinding().po(44));
 	}
 
 	public String po(int n) {
-
-		return po(2, n);
+		
+		List<Integer> factorList = po(2, n, new ArrayList<Integer>());
+		
+		return String.join(", ", factorList.toArray());
 	}
 
-	private String po(int lastFactor, int n) {
+	private List<Integer> po(int lastFactor, int n, List<Integer> factors) {
 
 		if (n % lastFactor == 0) {
-			this.result.add(lastFactor);
-			po(lastFactor, n / lastFactor);
+			factors.add(lastFactor);
+			po(lastFactor, n / lastFactor, factors);
 		}
 		else {
 			if (lastFactor < n) {
-				po(++lastFactor, n);
+				po(++lastFactor, n, factors);
 			}
 		}
 		
-		return this.result.toString();
+		return factors;
 	}
 
 	private boolean isPrime(int factor) {
