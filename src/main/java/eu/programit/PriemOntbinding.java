@@ -70,7 +70,7 @@ public class PriemOntbinding {
 
 	private boolean isPrime(int factor) {
 		BigInteger bi = new BigInteger(Integer.valueOf(factor).toString());
-		boolean result = bi.isProbablePrime(PRETTYSURE); // rloman what is that 100
+		boolean result = bi.isProbablePrime(PRETTYSURE);
 
 		return result;
 	}
