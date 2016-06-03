@@ -16,7 +16,7 @@ public class PriemOntbindingTest {
 	
 	@Test
 	public void testFoo() {
-		Assert.assertEquals("2,3,", this.po.po(6));
+		Assert.assertEquals("2, 3", this.po.po(6));
 	}
 
 }

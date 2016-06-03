@@ -12,15 +12,15 @@ public class PriemOntbinding {
 
 	public String po(int n) {
 		
-		List<Integer> factorList = po(2, n, new ArrayList<Integer>());
+		List<String> factorList = po(2, n, new ArrayList<String>());
 		
-		return String.join(", ", factorList.toArray());
+		return String.join(", ", factorList);
 	}
 
-	private List<Integer> po(int lastFactor, int n, List<Integer> factors) {
-
+	private List<String> po(int lastFactor, int n, List<String> factors) {
+		
 		if (n % lastFactor == 0) {
-			factors.add(lastFactor);
+			factors.add(Integer.valueOf(lastFactor).toString());
 			po(lastFactor, n / lastFactor, factors);
 		}
 		else {
