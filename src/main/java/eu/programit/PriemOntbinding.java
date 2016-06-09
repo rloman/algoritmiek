@@ -19,8 +19,6 @@ public class PriemOntbinding {
 
 		LOGGER.debug(String.format("Entering PriemOntbinding::po with [%d]", n));
 
-		String result = "";
-
 		Map<Integer, Integer> counterMap = new TreeMap<>();
 		List<Integer> factorList = po(2, n, new ArrayList<>());
 
@@ -33,25 +31,20 @@ public class PriemOntbinding {
 			counterMap.put(element, counterMap.get(element) + 1);
 		}
 
-		boolean tail = false;
+		List<String> result = new ArrayList<>();
 		for (Entry<Integer, Integer> element : counterMap.entrySet()) {
-			if (tail) {
-				result += "*";
-			}
 			if (element.getValue() == 1) {
-				result += element.getKey();
+				result.add(element.getKey().toString());
 			}
 			else {
-				result += element.getKey() + "^" + element.getValue();
+				result.add(element.getKey() + "^" + element.getValue());
 			}
-
-			tail = true;
 		}
 
 		LOGGER.info(String.format("The result of the po of [%d] is [%s]", n, result));
 		LOGGER.debug(String.format("Leaving PriemOntbinding::po with [%d]", n));
 
-		return result;
+		return String.join("*", result);
 	}
 
 	private List<Integer> po(int lastFactor, int n, List<Integer> factors) {
